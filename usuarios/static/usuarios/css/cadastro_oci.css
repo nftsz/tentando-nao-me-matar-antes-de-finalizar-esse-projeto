@@ -1,8 +1,8 @@
-.main-content {
+.main-content-inner {
     padding: 30px 40px;
     max-width: 1200px;
-    margin: 0 auto;
     width: 100%;
+    margin: 0 auto;
 }
 
 .page-title {

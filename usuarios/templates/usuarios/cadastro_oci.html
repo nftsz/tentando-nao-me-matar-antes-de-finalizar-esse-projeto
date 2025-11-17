@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Cadastro de OCI{% endblock %}
+{% block title %}Monitora OCI - Cadastro de OCI{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'usuarios/css/cadastro_oci.css' %}">
@@ -9,38 +9,42 @@
 
 {% block content %}
 
-<h2 class="page-title">Cadastro de OCI</h2>
+<div class= "main-content-inner">
 
-<div class="card">
-    <h3>Buscar Paciente</h3>
-
-    <div class="input-row">
-        <input type="text" id="cpf_lookup" class="form-control" placeholder="Digite o CPF">
-        <button class="btn-primary" onclick="buscarCPF()">Buscar</button>
+    <h2 class="page-title">Cadastro de OCI</h2>
+    
+    <div class="card">
+        <h3>Buscar Paciente</h3>
+    
+        <div class="input-row">
+            <input type="text" id="cpf_lookup" class="form-control" placeholder="Digite o CPF">
+            <button class="btn-primary" onclick="buscarCPF()">Buscar</button>
+        </div>
+    
+        <div id="statusBusca" class="search-status"></div>
     </div>
-
-    <div id="statusBusca" class="search-status"></div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" id="paciente_id" name="paciente_id" />
+    
+        <!-- BLOQUEADO NO INÍCIO -->
+        <div class="card bloqueado" id="card_paciente">
+            <h3>Dados do Paciente</h3>
+            {{ paciente_form.as_p }}
+        </div>
+    
+        <div class="card bloqueado" id="card_oci">
+            <h3>Dados da OCI</h3>
+            {{ oci_form.as_p }}
+        </div>
+    
+        <div class="form-actions bloqueado" id="acoes_form">
+            <button type="submit" class="btn-primary">Salvar</button>
+        </div>
+    </form>
 </div>
 
-<form method="post">
-    {% csrf_token %}
-    <input type="hidden" id="paciente_id" name="paciente_id" />
-
-    <!-- BLOQUEADO NO INÍCIO -->
-    <div class="card bloqueado" id="card_paciente">
-        <h3>Dados do Paciente</h3>
-        {{ paciente_form.as_p }}
-    </div>
-
-    <div class="card bloqueado" id="card_oci">
-        <h3>Dados da OCI</h3>
-        {{ oci_form.as_p }}
-    </div>
-
-    <div class="form-actions bloqueado" id="acoes_form">
-        <button type="submit" class="btn-primary">Salvar</button>
-    </div>
-</form>
 
 <script src="{% static 'usuarios/js/cadastro_oci.js' %}"></script>
 

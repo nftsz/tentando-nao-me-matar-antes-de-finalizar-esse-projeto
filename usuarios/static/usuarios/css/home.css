@@ -1,21 +1,87 @@
 /* Conteúdo */
-.main-content {
+.main-content-inner {
     padding: 30px 40px;
     flex: 1;
+    overflow: hidden; /* remove vertical e horizontal */
 }
 
-.content-section {
-    background: white;
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.section-title {
+.page-title {
+    font-size: 26px;
+    margin-bottom: 20px;
     color: #273287;
-    font-size: 20px;
-    margin-bottom: 15px;
     font-weight: 600;
 }
 
+/* Seções */
+.section-title {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #273287;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Paginação */
+.pager a,
+.pager .disabled {
+    padding: 4px 10px;
+    margin-left: 6px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+}
+
+.pager a {
+    background: #4E5BBD;
+}
+
+.pager .disabled {
+    background: #bbb;
+    opacity: 0.5;
+}
+
+/* Tabela */
+.tabela-pacientes {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.tabela-pacientes thead {
+    background: #4E5BBD;
+    color: white;
+}
+
+.tabela-pacientes th,
+.tabela-pacientes td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Zebra rows */
+.tabela-pacientes tbody tr:nth-child(even) {
+    background: #f5f6ff;
+}
+
+.tabela-pacientes tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+.tabela-pacientes tbody tr:hover {
+    background: #e8eaff;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Data limite vermelha */
+.vermelho {
+    color: #c62828;
+    font-weight: 600;
+}

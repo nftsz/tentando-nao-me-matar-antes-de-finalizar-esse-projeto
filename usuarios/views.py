@@ -1,9 +1,13 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
+from django.utils.timezone import now
+from django.core.paginator import Paginator
+from django.db.models import Q
+from datetime import timedelta
 from .forms import LoginForm, PacienteForm, OCIForm
 from django.http import JsonResponse
-from .models import Paciente
+from .models import Paciente, OCI
 
 
 class CustomLoginView(LoginView):
@@ -18,7 +22,30 @@ class CustomLogoutView(LogoutView):
     next_page = reverse_lazy('login')
 
 def home(request):
-    return render(request, 'usuarios/home.html', {'user': request.user})
+    hoje = now().date()
+
+    oci_queryset = OCI.objects.select_related("paciente").order_by("-data_abertura")
+    # qunatidade de linhas por pagina
+    paginator_latest = Paginator(oci_queryset, 5)
+
+    page_latest = request.GET.get("page_latest", 1)
+    latest_page = paginator_latest.get_page(page_latest)
+
+    # OCIs vencidas (filtro equivalente ao @property data_limite)
+    vencidas_queryset = OCI.objects.select_related("paciente").filter(
+        Q(tipo="cancer", data_abertura__lt=hoje - timedelta(days=30)) |
+        Q(tipo="geral", data_abertura__lt=hoje - timedelta(days=60)),
+        data_conclusao__isnull=True
+    ).order_by("data_abertura")
+
+    paginator_vencidas = Paginator(vencidas_queryset, 5)
+    page_vencidas = request.GET.get("page_vencidas", 1)
+    vencidas_page = paginator_vencidas.get_page(page_vencidas)
+
+    return render(request, "usuarios/home.html", {
+        "latest_page": latest_page,
+        "vencidas_page": vencidas_page,
+    })
 
 def buscar_paciente(request):
     cpf = request.GET.get('cpf')

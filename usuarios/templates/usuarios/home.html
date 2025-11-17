@@ -1,12 +1,110 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Monitora OCI - Home{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'usuarios/css/home.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="main-content-inner">
+
+    <!-- Paginacao da Primeira Secao-->
+    <h2 class="section-title">
+        Últimas OCIs Registradas
+        <span class="pager">
+            {% if latest_page.has_previous %}
+            <a href="?page_latest={{ latest_page.previous_page_number }}">&lt;</a>
+            {% else %}
+            <span class="disabled">&lt;</span>
+            {% endif %}
+    
+            {% if latest_page.has_next %}
+            <a href="?page_latest={{ latest_page.next_page_number }}">&gt;</a>
+            {% else %}
+            <span class="disabled">&gt;</span>
+            {% endif %}
+        </span>
+    </h2>
+    
+    <!-- Recentes Adicionadas -->
+    <table class="tabela-pacientes">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>OCI</th>
+                <th>Profissional Executante</th>
+                <th>Abertura</th>
+                <th>Conclusão</th>
+                <th>Data Limite</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for oci in latest_page %}
+            <tr>
+                <td>{{ oci.paciente.nome_completo }}</td>
+                <td>{{ oci.paciente.cpf }}</td>
+                <td>{{ oci.nome_oci }}</td>
+                <td>{{ oci.profissional_executante }}</td>
+                <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>
+                <td>{{ oci.data_conclusao|date:"d/m/Y" }}</td>
+                <td>{{ oci.data_limite|date:"d/m/Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhum registro encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <!-- Paginacao da Segunda Secao -->
+    <h2 class="section-title">
+        OCIs Fora do Prazo
+        <span class="pager">
+            {% if vencidas_page.has_previous %}
+            <a href="?page_vencidas={{ vencidas_page.previous_page_number }}">&lt;</a>
+            {% else %}
+            <span class="disabled">&lt;</span>
+            {% endif %}
+    
+            {% if vencidas_page.has_next %}
+            <a href="?page_vencidas={{ vencidas_page.next_page_number }}">&gt;</a>
+            {% else %}
+            <span class="disabled">&gt;</span>
+            {% endif %}
+        </span>
+    </h2>
+    
+    <!-- Foras do prazo -->
+    <table class="tabela-pacientes">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>OCI</th>
+                <th>Profissional Executante</th>
+                <th>Abertura</th>
+                <th>Data Limite</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for oci in vencidas_page %}
+            <tr>
+                <td>{{ oci.paciente.nome_completo }}</td>
+                <td>{{ oci.paciente.cpf }}</td>
+                <td>{{ oci.nome_oci }}</td>
+                <td>{{ oci.profissional_executante }}</td>
+                <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>
+                <td class="vermelho">{{ oci.data_limite|date:"d/m/Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma OCI atrasada. Boa!</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
