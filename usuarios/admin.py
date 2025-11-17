@@ -35,4 +35,3 @@ class UBSAdmin(admin.ModelAdmin):
 class ProfissionalExecutanteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'especialidade')
     search_fields = ('nome', 'especialidade')
-

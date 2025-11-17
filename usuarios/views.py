@@ -16,3 +16,4 @@ class CustomLogoutView(LogoutView):
 
 def home(request):
     return render(request, 'usuarios/home.html', {'user': request.user})
+

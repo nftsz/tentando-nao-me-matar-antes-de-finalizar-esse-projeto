@@ -9,3 +9,4 @@ class LoginForm(AuthenticationForm):
         "invalid_login": "CPF ou senha incorretos.",
         "inactive": "Esta conta está inativa.",
     }
+
