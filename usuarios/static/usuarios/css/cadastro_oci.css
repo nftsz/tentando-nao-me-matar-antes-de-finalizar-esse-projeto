@@ -1,0 +1,171 @@
+.main-content {
+    padding: 30px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    color: #273287;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.card {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-left: 4px solid #4E5BBD;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    color: #273287;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4E5BBD;
+    box-shadow: 0 0 0 3px rgba(78, 91, 189, 0.1);
+}
+
+button {
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #4E5BBD;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3a479d;
+    box-shadow: 0 4px 8px rgba(78, 91, 189, 0.3);
+}
+
+.search-status {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 3px solid #2e7d32;
+}
+
+.status-warning {
+    background-color: #fff3e0;
+    color: #ef6c00;
+    border-left: 3px solid #ef6c00;
+}
+
+.status-info {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-left: 3px solid #1565c0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+/* BLOQUEIO — o ouro */
+.bloqueado {
+    opacity: 0.5;
+    filter: grayscale(40%);
+    pointer-events: none;
+}
+
+/* Campos Django */
+.card p { margin-bottom: 20px; }
+
+.card p label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.card p input,
+.card p select,
+.card p textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card p input:focus,
+.card p select:focus,
+.card p textarea:focus {
+    outline: none;
+    border-color: #4E5BBD;
+    box-shadow: 0 0 0 3px rgba(78, 91, 189, 0.1);
+}
+
+/* Campo data */
+.card p input[type="date"] {
+    padding: 11px 15px;
+}
+
+/* CPF lookup */
+#cpf_lookup {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+#cpf_lookup:focus {
+    outline: none;
+    border-color: #4E5BBD;
+    box-shadow: 0 0 0 3px rgba(78, 91, 189, 0.1);
+}
