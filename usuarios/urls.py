@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CustomLoginView, CustomLogoutView, home, buscar_paciente, cadastrar_oci, consulta_oci
+from .views import CustomLoginView, CustomLogoutView, home, buscar_paciente, cadastrar_oci, buscar_ocis, consulta_oci
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
@@ -8,5 +8,6 @@ urlpatterns = [
     path('', login_required(home), name='home'),
     path("buscar-paciente/", login_required(buscar_paciente), name="buscar_paciente"),
     path("cadastrar-oci/", login_required(cadastrar_oci), name="cadastrar_oci"),
-    path("consulta/", login_required(consulta_oci), name="consulta_oci"),
+    path('consulta-ocis/', consulta_oci, name='consulta_oci'), # pagina q realmente renderiza o template
+    path('buscar-ocis/', buscar_ocis, name='buscar_ocis'), # apenas AJAX
 ]

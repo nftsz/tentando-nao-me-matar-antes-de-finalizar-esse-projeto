@@ -72,6 +72,11 @@ class Paciente(models.Model):
 
     def __str__(self):
         return f"{self.nome_completo} ({self.cpf})"
+    
+    @property
+    def cpf_formatado(self):
+        c = self.cpf
+        return f"{c[:3]}.{c[3:6]}.{c[6:9]}-{c[9:]}"
 
 # 
 class OCI(models.Model):

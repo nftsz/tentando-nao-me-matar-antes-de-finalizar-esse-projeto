@@ -1,7 +1,9 @@
 /* Conteúdo */
 .main-content-inner {
-    padding: 30px 40px;
-    flex: 1;
+    padding: 30px 20px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .page-title {

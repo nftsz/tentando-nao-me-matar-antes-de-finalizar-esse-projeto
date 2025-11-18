@@ -43,7 +43,7 @@
             {% for oci in latest_page %}
             <tr>
                 <td>{{ oci.paciente.nome_completo }}</td>
-                <td>{{ oci.paciente.cpf }}</td>
+                <td>{{ oci.paciente.cpf_formatado }}</td>
                 <td>{{ oci.nome_oci }}</td>
                 <td>{{ oci.profissional_executante }}</td>
                 <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>
@@ -92,7 +92,7 @@
             {% for oci in vencidas_page %}
             <tr>
                 <td>{{ oci.paciente.nome_completo }}</td>
-                <td>{{ oci.paciente.cpf }}</td>
+                <td>{{ oci.paciente.cpf_formatado }}</td>
                 <td>{{ oci.nome_oci }}</td>
                 <td>{{ oci.profissional_executante }}</td>
                 <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>

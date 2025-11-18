@@ -85,7 +85,7 @@ def cadastrar_oci(request):
             oci.paciente = paciente
             oci.save()
 
-            return redirect("home")  # troque pela sua página final
+            return redirect("home")  
 
     else:
         paciente_form = PacienteForm()
@@ -96,18 +96,40 @@ def cadastrar_oci(request):
         "oci_form": oci_form
     })
 
-def consulta_oci(request):
+def buscar_ocis(request):
     cpf = request.GET.get("cpf")
-    ocis = []
-    paciente = None
+    if not cpf:
+        return JsonResponse({"exists": False, "erro": "Digite um CPF antes de buscar."})
 
-    if cpf:
-        paciente = Paciente.objects.filter(cpf=cpf).first()
-        if paciente:
-            ocis = paciente.ocis.select_related("profissional_executante").all()
+    cpf_normalizado = cpf.replace(".", "").replace("-", "") # caso pesquise ja com formatacao
 
-    return render(request, "usuarios/consulta.html", {
-        "paciente": paciente,
-        "ocis": ocis,
-        "cpf_pesquisado": cpf,
-    })
+    try:
+        paciente = Paciente.objects.get(cpf=cpf_normalizado)
+        ocis = paciente.ocis.select_related("profissional_executante").all()
+
+        dados_ocis = []
+        for oci in ocis:
+            dados_ocis.append({
+                "codigo": oci.codigo_oci,
+                "nome": oci.nome_oci,
+                "tipo": oci.get_tipo_display(),
+                "medico": str(oci.profissional_executante),
+                "abertura": oci.data_abertura.strftime("%d/%m/%Y") if oci.data_abertura else "",
+                "conclusao": oci.data_conclusao.strftime("%d/%m/%Y") if oci.data_conclusao else "",
+                "limite": oci.data_limite.strftime("%d/%m/%Y") if oci.data_limite else "",
+            })
+
+        return JsonResponse({
+            "exists": True,
+            "paciente": {
+                "nome": paciente.nome_completo,
+                "cpf": paciente.cpf_formatado,
+            },
+            "ocis": dados_ocis
+        })
+    except Paciente.DoesNotExist:
+        return JsonResponse({"exists": False, "erro": "Paciente não encontrado."})
+
+def consulta_oci(request):
+    # apenas renderiza o template, nada de lógica de busca aqui
+    return render(request, "usuarios/consulta.html")
