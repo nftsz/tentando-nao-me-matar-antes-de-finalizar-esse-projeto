@@ -1,0 +1,133 @@
+/* Mantém a base da home */
+.main-content-inner {
+    padding: 30px 40px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Título igual vibe do sistema */
+.page-title {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #273287;
+    font-weight: 700;
+}
+
+/* BLOCO da Busca – estilizado como card da home */
+.busca-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    border-left: 6px solid #4E5BBD;
+}
+
+/* "Buscar Paciente" estilo seção */
+.busca-card h3 {
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #273287;
+}
+
+/* Linha do input */
+.input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 15px;
+    border: 2px solid #d6d9ff;
+    border-radius: 6px;
+    background: #f8f9ff;
+}
+
+.input-row input:focus {
+    border-color: #4E5BBD;
+    background: #fff;
+    outline: none;
+}
+
+.btn-primary {
+    background: #4E5BBD;
+    color: white;
+    border: none;
+    font-size: 15px;
+    border-radius: 6px;
+    padding: 14px 22px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: #3c4796;
+}
+
+/* Status da busca */
+.status-text {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #273287;
+}
+
+/* Seção dos resultados com mesmo padrão da home */
+.resultados-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #273287;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Tabela igual à home */
+.tabela-pacientes {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.tabela-pacientes thead {
+    background: #4E5BBD;
+    color: white;
+}
+
+.tabela-pacientes th,
+.tabela-pacientes td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Linhas alternadas */
+.tabela-pacientes tbody tr:nth-child(even) {
+    background: #f5f6ff;
+}
+
+.tabela-pacientes tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+.tabela-pacientes tbody tr:hover {
+    background: #e8eaff;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Data limite atrasada */
+.vermelho {
+    color: #c62828;
+    font-weight: 700;
+}

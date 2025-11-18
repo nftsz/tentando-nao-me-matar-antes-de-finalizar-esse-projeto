@@ -95,3 +95,19 @@ def cadastrar_oci(request):
         "paciente_form": paciente_form,
         "oci_form": oci_form
     })
+
+def consulta_oci(request):
+    cpf = request.GET.get("cpf")
+    ocis = []
+    paciente = None
+
+    if cpf:
+        paciente = Paciente.objects.filter(cpf=cpf).first()
+        if paciente:
+            ocis = paciente.ocis.select_related("profissional_executante").all()
+
+    return render(request, "usuarios/consulta.html", {
+        "paciente": paciente,
+        "ocis": ocis,
+        "cpf_pesquisado": cpf,
+    })

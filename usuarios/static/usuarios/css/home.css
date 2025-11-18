@@ -2,7 +2,6 @@
 .main-content-inner {
     padding: 30px 40px;
     flex: 1;
-    overflow: hidden; /* remove vertical e horizontal */
 }
 
 .page-title {

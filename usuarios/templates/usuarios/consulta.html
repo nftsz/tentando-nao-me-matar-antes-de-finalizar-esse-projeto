@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'usuarios/css/consulta.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content-inner">
+
+    <h2 class="page-title">Consultar OCI por CPF</h2>
+
+    <!-- CARD DE BUSCA -->
+    <div class="busca-card">
+        <h3>Buscar Paciente</h3>
+
+        <form method="get" class="input-row">
+            <input 
+                type="text" 
+                name="cpf" 
+                value="{{ cpf_pesquisado|default_if_none:'' }}"
+                placeholder="Digite o CPF"
+            >
+            <button class="btn-primary">Buscar</button>
+        </form>
+
+        {% if cpf_pesquisado %}
+            <p class="status-text">
+                Consultando CPF: <strong>{{ cpf_pesquisado }}</strong>
+            </p>
+        {% endif %}
+    </div>
+
+    <!-- RESULTADOS -->
+    {% if cpf_pesquisado %}
+        {% if paciente %}
+            <h3 class="resultados-title">
+               {{ paciente.nome_completo }} ({{ paciente.cpf }})
+            </h3>
+
+            <table class="tabela-pacientes">
+                <thead>
+                    <tr>
+                        <th>OCI</th>
+                        <th>Tipo</th>
+                        <th>Médico</th>
+                        <th>Abertura</th>
+                        <th>Conclusão</th>
+                        <th>Data Limite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for oci in ocis %}
+                    <tr>
+                        <td>{{ oci.nome_oci }}</td>
+                        <td>{{ oci.get_tipo_display }}</td>
+                        <td>{{ oci.profissional_executante }}</td>
+                        <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>
+                        <td>{{ oci.data_conclusao|date:"d/m/Y" }}</td>
+                        <td>{{ oci.data_limite|date:"d/m/Y" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">Nenhuma OCI encontrada para este CPF.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="status-text">Nenhum paciente encontrado com esse CPF.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
