@@ -1,14 +1,10 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
-from django.utils.timezone import now
 from django.core.paginator import Paginator
-from django.db.models import Q
-from datetime import timedelta
 from .forms import LoginForm, PacienteForm, OCIForm
 from django.http import JsonResponse
 from .models import Paciente, OCI
-
 
 class CustomLoginView(LoginView):
     template_name = 'usuarios/login.html'
@@ -21,20 +17,16 @@ class CustomLoginView(LoginView):
 class CustomLogoutView(LogoutView):
     next_page = reverse_lazy('login')
 
+
 def home(request):
-    hoje = now().date()
-
+    # Todas as OCIs
     oci_queryset = OCI.objects.select_related("paciente").order_by("-data_abertura")
-    # qunatidade de linhas por pagina
     paginator_latest = Paginator(oci_queryset, 5)
-
     page_latest = request.GET.get("page_latest", 1)
     latest_page = paginator_latest.get_page(page_latest)
 
-    # OCIs vencidas (filtro equivalente ao @property data_limite)
+    # OCIs atrasadas (usando a property atrasada)
     vencidas_queryset = OCI.objects.select_related("paciente").filter(
-        Q(tipo="cancer", data_abertura__lt=hoje - timedelta(days=30)) |
-        Q(tipo="geral", data_abertura__lt=hoje - timedelta(days=60)),
         data_conclusao__isnull=True
     ).order_by("data_abertura")
 
@@ -47,10 +39,15 @@ def home(request):
         "vencidas_page": vencidas_page,
     })
 
+
 def buscar_paciente(request):
     cpf = request.GET.get('cpf')
+    if not cpf:
+        return JsonResponse({"exists": False})
+
+    cpf_normalizado = cpf.replace(".", "").replace("-", "")
     try:
-        p = Paciente.objects.get(cpf=cpf)
+        p = Paciente.objects.get(cpf=cpf_normalizado)
         return JsonResponse({
             "exists": True,
             "dados": {
@@ -65,12 +62,12 @@ def buscar_paciente(request):
         })
     except Paciente.DoesNotExist:
         return JsonResponse({"exists": False})
-    
+
+
 def cadastrar_oci(request):
     if request.method == "POST":
         paciente_id = request.POST.get("paciente_id")
 
-        # Paciente já existe
         if paciente_id:
             paciente = Paciente.objects.get(id=paciente_id)
             paciente_form = PacienteForm(request.POST, instance=paciente)
@@ -84,8 +81,7 @@ def cadastrar_oci(request):
             oci = oci_form.save(commit=False)
             oci.paciente = paciente
             oci.save()
-
-            return redirect("home")  
+            return redirect("home")
 
     else:
         paciente_form = PacienteForm()
@@ -96,12 +92,13 @@ def cadastrar_oci(request):
         "oci_form": oci_form
     })
 
+
 def buscar_ocis(request):
     cpf = request.GET.get("cpf")
     if not cpf:
         return JsonResponse({"exists": False, "erro": "Digite um CPF antes de buscar."})
 
-    cpf_normalizado = cpf.replace(".", "").replace("-", "") # caso pesquise ja com formatacao
+    cpf_normalizado = cpf.replace(".", "").replace("-", "")
 
     try:
         paciente = Paciente.objects.get(cpf=cpf_normalizado)
@@ -117,6 +114,7 @@ def buscar_ocis(request):
                 "abertura": oci.data_abertura.strftime("%d/%m/%Y") if oci.data_abertura else "",
                 "conclusao": oci.data_conclusao.strftime("%d/%m/%Y") if oci.data_conclusao else "",
                 "limite": oci.data_limite.strftime("%d/%m/%Y") if oci.data_limite else "",
+                "atrasada": oci.atrasada,
             })
 
         return JsonResponse({
@@ -127,9 +125,10 @@ def buscar_ocis(request):
             },
             "ocis": dados_ocis
         })
+
     except Paciente.DoesNotExist:
         return JsonResponse({"exists": False, "erro": "Paciente não encontrado."})
 
+
 def consulta_oci(request):
-    # apenas renderiza o template, nada de lógica de busca aqui
     return render(request, "usuarios/consulta.html")
