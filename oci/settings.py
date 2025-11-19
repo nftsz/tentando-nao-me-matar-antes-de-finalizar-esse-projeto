@@ -29,7 +29,11 @@ SECRET_KEY = 'django-insecure-w1*2656n%(=mlvo(9#y9-8=nluw7*uxvt(e&rlp&q=pjc6=k*(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "normative-isis-unnagging.ngrok-free.dev",
+    ]
 
 
 # Application definition
@@ -129,6 +133,10 @@ STATICFILES_DIRS = [BASE_DIR / 'usuarios' / 'static']
 
 # Login
 AUTH_USER_MODEL = 'usuarios.Usuario'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://normative-isis-unnagging.ngrok-free.dev",
+]
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'  # ou 'home' se quiser usar o nome da url

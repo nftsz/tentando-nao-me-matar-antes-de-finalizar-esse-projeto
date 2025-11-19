@@ -121,7 +121,7 @@
 
 .resultados-title {
     color: #273287;
-    font-size: 35px;;
+    font-size: 35px;
     padding-bottom: 10px;
     font-weight: bold;
 }
@@ -173,4 +173,375 @@
 .verde {
     color: #0b8f00;
     font-weight: bold;
+}
+
+/* =========================================
+   RESPONSIVIDADE - TABLETS (768px - 1024px)
+   ========================================= */
+@media screen and (max-width: 1024px) {
+    .main-content-inner {
+        padding: 25px 20px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .card {
+        padding: 20px 25px;
+        margin-bottom: 20px;
+    }
+    
+    .card h3 {
+        font-size: 19px;
+        margin-bottom: 18px;
+    }
+    
+    .resultados-title {
+        font-size: 30px;
+    }
+    
+    .tabela-pacientes th,
+    .tabela-pacientes td {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - TABLETS PEQUENOS (576px - 768px)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .main-content-inner {
+        padding: 20px 15px;
+    }
+    
+    .page-title {
+        font-size: 22px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+    }
+    
+    .card {
+        padding: 18px 20px;
+        margin-bottom: 18px;
+        border-left-width: 3px;
+    }
+    
+    .card h3 {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+    
+    .input-row {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    .resultados-title {
+        font-size: 26px;
+    }
+    
+    /* Tabela responsiva */
+    .tabela-pacientes {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+    
+    .tabela-pacientes thead,
+    .tabela-pacientes tbody,
+    .tabela-pacientes th,
+    .tabela-pacientes td,
+    .tabela-pacientes tr {
+        display: block;
+    }
+    
+    .tabela-pacientes thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .tabela-pacientes tr {
+        border: 1px solid #e0e0e0;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        padding: 10px;
+    }
+    
+    .tabela-pacientes td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        white-space: normal;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .tabela-pacientes td:last-child {
+        border-bottom: none;
+    }
+    
+    .tabela-pacientes td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: #273287;
+        text-align: left;
+        white-space: nowrap;
+    }
+    
+    /* Remove hover effects em dispositivos touch */
+    @media (hover: none) {
+        .card:hover {
+            transform: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: none;
+            background: #4E5BBD;
+        }
+        
+        .tabela-pacientes tbody tr:hover {
+            background: inherit;
+        }
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES (480px - 576px)
+   ========================================= */
+@media screen and (max-width: 576px) {
+    .main-content-inner {
+        padding: 15px 12px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+    
+    .card {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+    
+    .card h3 {
+        font-size: 17px;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+    }
+    
+    .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .search-status {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    .resultados-title {
+        font-size: 22px;
+    }
+    
+    .tabela-pacientes td {
+        padding: 10px 12px 10px 50%;
+        font-size: 13px;
+    }
+    
+    .tabela-pacientes td:before {
+        left: 10px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES PEQUENOS (até 480px)
+   ========================================= */
+@media screen and (max-width: 480px) {
+    .main-content-inner {
+        padding: 12px 10px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+    
+    .card {
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+    }
+    
+    .card h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .input-row {
+        gap: 8px;
+    }
+    
+    .form-control {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .resultados-title {
+        font-size: 20px;
+    }
+    
+    .tabela-pacientes td {
+        padding: 8px 10px 8px 45%;
+        font-size: 12px;
+    }
+    
+    .tabela-pacientes td:before {
+        left: 8px;
+        font-size: 11px;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE - TELAS GRANDES (acima de 1440px)
+   ========================================= */
+@media screen and (min-width: 1440px) {
+    .main-content-inner {
+        padding: 40px 30px;
+        max-width: 1600px;
+    }
+    
+    .page-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .card {
+        padding: 30px 35px;
+        margin-bottom: 30px;
+    }
+    
+    .card h3 {
+        font-size: 22px;
+    }
+    
+    .resultados-title {
+        font-size: 38px;
+    }
+}
+
+/* =========================================
+   MELHORIAS PARA ORIENTAÇÃO PAISAGEM
+   ========================================= */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .main-content-inner {
+        padding: 15px 12px;
+    }
+    
+    .input-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .input-row .form-control {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .btn-primary {
+        width: auto;
+        margin-top: 0;
+    }
+    
+    /* Tabela em paisagem - mostra horizontal com scroll */
+    .tabela-pacientes {
+        display: table;
+        white-space: normal;
+    }
+    
+    .tabela-pacientes thead tr {
+        position: static;
+    }
+    
+    .tabela-pacientes th,
+    .tabela-pacientes td {
+        display: table-cell;
+        padding: 10px 12px;
+        text-align: left;
+        padding-left: 12px;
+    }
+    
+    .tabela-pacientes td:before {
+        display: none;
+    }
+}
+
+/* =========================================
+   AJUSTES PARA TECLADO VIRTUAL
+   ========================================= */
+@media screen and (max-height: 500px) and (max-width: 768px) {
+    .main-content-inner {
+        padding: 10px 8px;
+    }
+    
+    .page-title {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+    
+    .card {
+        padding: 10px 12px;
+        margin-bottom: 10px;
+    }
+    
+    .result-container {
+        margin-top: 1rem;
+    }
+}
+
+/* =========================================
+   ACESSIBILIDADE E MELHORIAS TOUCH
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* Melhora área de toque */
+    .btn-primary,
+    .tabela-pacientes tr {
+        min-height: 44px; /* Tamanho mínimo recomendado para toque */
+    }
+    
+    /* Remove transições pesadas em mobile */
+    .card,
+    .btn-primary,
+    .tabela-pacientes tr {
+        transition: none;
+    }
 }

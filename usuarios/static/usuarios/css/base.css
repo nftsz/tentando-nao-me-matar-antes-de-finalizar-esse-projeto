@@ -109,11 +109,9 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    flex: 1; /* <-- substitui o min-height: 100vh */
-
+    flex: 1;
     background: url("../img/fundo.png") no-repeat center center fixed;
     background-size: cover;
-
     overflow: hidden;
 }
 
@@ -131,4 +129,204 @@ body {
 .main-content > * {
     position: relative;
     z-index: 1;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .main-header {
+        padding: 20px 30px;
+    }
+    
+    .header-logo {
+        padding-left: 20px;
+        height: 45px;
+    }
+    
+    .menu-inline {
+        padding-left: 30px;
+        gap: 40px;
+    }
+    
+    .user-info {
+        margin-right: 20px;
+    }
+    
+    .welcome-message {
+        font-size: 15px;
+    }
+    
+    .ubs-info {
+        font-size: 13px;
+    }
+}
+
+/* Tablets Pequenos e Celulares Grandes (576px - 768px) */
+@media screen and (max-width: 768px) {
+    .main-header {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    
+    .header-logo {
+        padding-left: 0;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .user-info {
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 10px;
+        order: 3;
+        flex-basis: 100%;
+    }
+    
+    .logout-section {
+        margin-left: auto;
+    }
+    
+    .functionalities-menu {
+        padding: 8px 15px;
+    }
+    
+    .menu-inline {
+        padding-left: 15px;
+        gap: 30px;
+        justify-content: center;
+    }
+    
+    .menu-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* Celulares (480px - 576px) */
+@media screen and (max-width: 576px) {
+    .main-header {
+        padding: 12px 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-logo {
+        height: 35px;
+        padding-left: 0;
+        margin-bottom: 8px;
+    }
+    
+    .user-info {
+        margin: 8px 0;
+        order: 2;
+    }
+    
+    .welcome-message {
+        font-size: 14px;
+    }
+    
+    .ubs-info {
+        font-size: 12px;
+    }
+    
+    .logout-section {
+        order: 3;
+        margin-top: 8px;
+    }
+    
+    .logout-btn {
+        padding: 6px 15px;
+        font-size: 13px;
+    }
+    
+    .functionalities-menu {
+        padding: 6px 10px;
+    }
+    
+    .menu-inline {
+        padding-left: 10px;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu-item {
+        font-size: 0.85rem;
+        padding: 5px 0;
+    }
+}
+
+/* Celulares Pequenos (até 480px) */
+@media screen and (max-width: 480px) {
+    .main-header {
+        padding: 10px 12px;
+    }
+    
+    .header-logo {
+        height: 30px;
+    }
+    
+    .menu-inline {
+        gap: 15px;
+        padding-left: 5px;
+    }
+    
+    .menu-item {
+        font-size: 0.8rem;
+    }
+    
+    .welcome-message {
+        font-size: 13px;
+    }
+    
+    .ubs-info {
+        font-size: 11px;
+    }
+    
+    .logout-btn {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Ajustes para telas muito grandes (acima de 1440px) */
+@media screen and (min-width: 1440px) {
+    .main-header {
+        padding: 30px 60px;
+    }
+    
+    .header-logo {
+        height: 60px;
+    }
+    
+    .menu-inline {
+        padding-left: 80px;
+        gap: 80px;
+    }
+    
+    .welcome-message {
+        font-size: 18px;
+    }
+    
+    .ubs-info {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes para quando o teclado virtual está aberto em celulares */
+@media screen and (max-height: 500px) and (max-width: 768px) {
+    .main-header {
+        padding: 8px 15px;
+    }
+    
+    .functionalities-menu {
+        position: relative;
+    }
+}
+
+/* Prevenir zoom em inputs em iOS */
+@media screen and (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
 }
