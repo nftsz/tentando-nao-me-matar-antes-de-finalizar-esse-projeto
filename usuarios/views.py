@@ -93,42 +93,60 @@ def cadastrar_oci(request):
     })
 
 
-def buscar_ocis(request):
-    cpf = request.GET.get("cpf")
-    if not cpf:
-        return JsonResponse({"exists": False, "erro": "Digite um CPF antes de buscar."})
+def consulta_oci(request):
+    """Renderiza a tela de consulta."""
+    return render(request, "usuarios/consulta.html")
 
+def api_buscar_ocis_paciente(request):
+    """API que recebe o CPF e retorna JSON com as OCIs."""
+    cpf = request.GET.get('cpf')
+    if not cpf:
+        return JsonResponse({"found": False, "message": "CPF não informado."})
+
+    # Normaliza o CPF (remove pontos e traços)
     cpf_normalizado = cpf.replace(".", "").replace("-", "")
 
     try:
-        paciente = Paciente.objects.get(cpf=cpf_normalizado)
-        ocis = paciente.ocis.select_related("profissional_executante").all()
+        p = Paciente.objects.get(cpf=cpf_normalizado)
+        
+        # Busca as OCIs desse paciente
+        ocis = OCI.objects.filter(paciente=p).order_by('-data_abertura')
 
-        dados_ocis = []
+        ocis_data = []
         for oci in ocis:
-            dados_ocis.append({
-                "codigo": oci.codigo_oci,
-                "nome": oci.nome_oci,
-                "tipo": oci.get_tipo_display(),
-                "medico": str(oci.profissional_executante),
-                "abertura": oci.data_abertura.strftime("%d/%m/%Y") if oci.data_abertura else "",
-                "conclusao": oci.data_conclusao.strftime("%d/%m/%Y") if oci.data_conclusao else "",
-                "limite": oci.data_limite.strftime("%d/%m/%Y") if oci.data_limite else "",
-                "atrasada": oci.atrasada,
+            # Lógica de cor (igual ao template da home)
+            classe_css = ""
+            if oci.data_conclusao and oci.data_limite and oci.data_conclusao <= oci.data_limite:
+                classe_css = "verde"
+            elif oci.atrasada: # property @atrasada no model
+                classe_css = "vermelho"
+
+            # Formatando datas para string BR
+            d_abertura = oci.data_abertura.strftime('%d/%m/%Y') if oci.data_abertura else "-"
+            d_conclusao = oci.data_conclusao.strftime('%d/%m/%Y') if oci.data_conclusao else "-"
+            d_limite = oci.data_limite.strftime('%d/%m/%Y') if oci.data_limite else "-"
+
+            ocis_data.append({
+                "codigo_oci": oci.codigo_oci,
+                "nome_oci": oci.nome_oci,
+                "tipo_oci": oci.get_tipo_display(),
+                "profissional": str(oci.profissional_executante), # 
+                "data_abertura": d_abertura,
+                "data_conclusao": d_conclusao,
+                "data_limite": d_limite,
+                "classe_status": classe_css
             })
 
+        cpf_fmt = f"{p.cpf[:3]}.{p.cpf[3:6]}.{p.cpf[6:9]}-{p.cpf[9:]}" if len(p.cpf) == 11 else p.cpf
+
         return JsonResponse({
-            "exists": True,
-            "paciente": {
-                "nome": paciente.nome_completo,
-                "cpf": paciente.cpf_formatado,
+            "found": True,
+            "paciente": {  
+                "nome": p.nome_completo,
+                "cpf": cpf_fmt
             },
-            "ocis": dados_ocis
+            "ocis": ocis_data
         })
 
     except Paciente.DoesNotExist:
-        return JsonResponse({"exists": False, "erro": "Paciente não encontrado."})
-
-
-def consulta_oci(request):
-    return render(request, "usuarios/consulta.html")
+        return JsonResponse({"found": False, "message": "Paciente não encontrado."})

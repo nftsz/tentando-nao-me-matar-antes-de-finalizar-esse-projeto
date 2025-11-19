@@ -1,29 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Consultar OCIs{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'usuarios/css/consulta.css' %}">
+
+<style>
+
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="main-content-inner">
+    <h2 class="page-title">Consulta de Histórico</h2>
 
-    <h2 class="page-title">Consultar OCI por CPF</h2>
-
-    <!-- CARD DE BUSCA -->
     <div class="card">
-        <h3>Buscar Paciente</h3>
-
+        <h3>Pesquisar por CPF</h3>
         <div class="input-row">
-            <input type="text" id="cpf_lookup" class="form-control" placeholder="Digite o CPF">
-            <button class="btn-primary" onclick="buscarCPF()">Buscar</button>
+            <input type="text" id="cpf_search" class="form-control" placeholder="Digite o CPF do paciente">
+            <button class="btn-primary" onclick="consultarHistorico()">Pesquisar</button>
         </div>
-
         <div id="statusBusca" class="search-status"></div>
     </div>
 
-    <div id="resultados"></div>
-    
+    <div id="resultado_area" class="result-container">
+        
+        <div id="titulo_container"></div>
+
+        <table class="tabela-pacientes">
+            <thead>
+                <tr>
+                    <th>Codigo da OCI</th>
+                    <th>OCI</th>
+                    <th>Tipo</th>
+                    <th>Profissional Executante</th>
+                    <th>Abertura</th>
+                    <th>Conclusão</th>
+                    <th>Data Limite</th>
+                </tr>
+            </thead>
+            <tbody id="tabela_corpo">
+                </tbody>
+        </table>
+    </div>
+</div>
+
 <script src="{% static 'usuarios/js/consulta.js' %}"></script>
 
 {% endblock %}
