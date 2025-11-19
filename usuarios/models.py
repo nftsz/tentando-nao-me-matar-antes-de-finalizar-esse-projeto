@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils.timezone import now
 from datetime import timedelta
 
 # Sessao do Admin: Cadastros
@@ -70,8 +71,17 @@ class Paciente(models.Model):
     ubs_solicitante = models.ForeignKey(UBS, on_delete=models.SET_NULL, null=True)
     data_agendamento_sisreg = models.DateField(blank=True, null=True)
 
+    # controle
+    data_registro = models.DateTimeField(auto_now_add=True)  
+
+
     def __str__(self):
         return f"{self.nome_completo} ({self.cpf})"
+    
+    @property
+    def cpf_formatado(self):
+        c = self.cpf
+        return f"{c[:3]}.{c[3:6]}.{c[6:9]}-{c[9:]}"
 
 # 
 class OCI(models.Model):
@@ -94,6 +104,12 @@ class OCI(models.Model):
         if self.tipo == 'cancer':
             return self.data_abertura + timedelta(days=30)
         return self.data_abertura + timedelta(days=60)
+
+    @property
+    def atrasada(self):
+        hoje = now().date()
+        limite = self.data_abertura + timedelta(days=30 if self.tipo == "cancer" else 60)
+        return hoje > limite
 
     def __str__(self):
         return f"OCI {self.codigo_oci} - {self.paciente.nome_completo}"

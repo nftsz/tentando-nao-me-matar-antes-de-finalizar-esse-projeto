@@ -1,6 +1,6 @@
 .main-content-inner {
-    padding: 30px 40px;
-    max-width: 1200px;
+    padding: 30px 20px;
+    max-width: 1500px;
     width: 100%;
     margin: 0 auto;
 }
@@ -169,3 +169,4 @@ button {
     border-color: #4E5BBD;
     box-shadow: 0 0 0 3px rgba(78, 91, 189, 0.1);
 }
+

@@ -61,3 +61,7 @@ async function buscarCPF() {
         document.getElementById("id_data_agendamento_sisreg").value = "";
     }
 }
+
+document.getElementById("cpf_lookup").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") consultarHistorico();
+});

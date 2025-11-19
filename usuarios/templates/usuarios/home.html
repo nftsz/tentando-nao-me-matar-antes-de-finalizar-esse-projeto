@@ -6,6 +6,17 @@
 {% endblock %}
 
 {% block content %}
+<!-- BLOCO DE NOTIFICAÇÃO (TOAST) -->
+{% if messages %}
+    <div id="toast-container">
+        {% for message in messages %}
+            <div class="toast-notification {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 <div class="main-content-inner">
 
     <!-- Paginacao da Primeira Secao-->
@@ -17,7 +28,7 @@
             {% else %}
             <span class="disabled">&lt;</span>
             {% endif %}
-    
+
             {% if latest_page.has_next %}
             <a href="?page_latest={{ latest_page.next_page_number }}">&gt;</a>
             {% else %}
@@ -25,7 +36,7 @@
             {% endif %}
         </span>
     </h2>
-    
+
     <!-- Recentes Adicionadas -->
     <table class="tabela-pacientes">
         <thead>
@@ -43,12 +54,20 @@
             {% for oci in latest_page %}
             <tr>
                 <td>{{ oci.paciente.nome_completo }}</td>
-                <td>{{ oci.paciente.cpf }}</td>
+                <td>{{ oci.paciente.cpf_formatado }}</td>
                 <td>{{ oci.nome_oci }}</td>
                 <td>{{ oci.profissional_executante }}</td>
                 <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>
                 <td>{{ oci.data_conclusao|date:"d/m/Y" }}</td>
-                <td>{{ oci.data_limite|date:"d/m/Y" }}</td>
+                <td class="
+                    {% if oci.data_conclusao and oci.data_conclusao <= oci.data_limite %}
+                        verde
+                    {% elif oci.atrasada %}
+                        vermelho
+                    {% endif %}">
+                    {{ oci.data_limite|date:"d/m/Y" }}
+                </td>
+
             </tr>
             {% empty %}
             <tr>
@@ -57,7 +76,7 @@
             {% endfor %}
         </tbody>
     </table>
-    
+
     <!-- Paginacao da Segunda Secao -->
     <h2 class="section-title">
         OCIs Fora do Prazo
@@ -67,7 +86,7 @@
             {% else %}
             <span class="disabled">&lt;</span>
             {% endif %}
-    
+
             {% if vencidas_page.has_next %}
             <a href="?page_vencidas={{ vencidas_page.next_page_number }}">&gt;</a>
             {% else %}
@@ -75,7 +94,7 @@
             {% endif %}
         </span>
     </h2>
-    
+
     <!-- Foras do prazo -->
     <table class="tabela-pacientes">
         <thead>
@@ -92,7 +111,7 @@
             {% for oci in vencidas_page %}
             <tr>
                 <td>{{ oci.paciente.nome_completo }}</td>
-                <td>{{ oci.paciente.cpf }}</td>
+                <td>{{ oci.paciente.cpf_formatado }}</td>
                 <td>{{ oci.nome_oci }}</td>
                 <td>{{ oci.profissional_executante }}</td>
                 <td>{{ oci.data_abertura|date:"d/m/Y" }}</td>
@@ -106,5 +125,23 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toasts = document.querySelectorAll('.toast-notification');
+        
+        toasts.forEach(toast => {
+            // Adiciona a classe para descer (aparecer)
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100); // Pequeno delay para garantir a transição
+
+            // Remove a classe para subir (sumir) após 4 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        });
+    });
+</script>
 
 {% endblock %}

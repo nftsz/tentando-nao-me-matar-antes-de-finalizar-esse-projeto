@@ -1,7 +1,55 @@
+/* =========================
+   NOTIFICAÇÃO TOAST
+   ========================= */
+#toast-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Fica acima de tudo */
+    pointer-events: none; /* Permite clicar através da área vazia */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.toast-notification {
+    background-color: white; /* Verde sucesso padrão ou use #4E5BBD para azul */
+    color: #4E5BBD;
+    padding: 15px 30px;
+    border-radius: 50px; /* Bordas bem arredondadas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-weight: 600;
+    font-size: 16px;
+    
+    /* Posição inicial (Escondido para cima) */
+    transform: translateY(-150%); 
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Efeito elástico suave */
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Classe ativada pelo JS para mostrar */
+.toast-notification.show {
+    transform: translateY(0);
+}
+
+
+/* Se houver erro (opcional) */
+.toast-notification.error {
+    background-color: #c62828;
+}
+
 /* Conteúdo */
 .main-content-inner {
-    padding: 30px 40px;
-    flex: 1;
+    padding: 30px 20px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .page-title {
@@ -83,4 +131,9 @@
 .vermelho {
     color: #c62828;
     font-weight: 600;
+}
+
+.verde {
+    color: #0b8f00;
+    font-weight: bold;
 }

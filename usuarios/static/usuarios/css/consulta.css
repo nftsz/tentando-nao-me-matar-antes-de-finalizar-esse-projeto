@@ -1,94 +1,132 @@
-/* Mantém a base da home */
+/* =========================================
+   ESTRUTURA GERAL
+   ========================================= */
 .main-content-inner {
-    padding: 30px 40px;
-    max-width: 1200px;
+    padding: 30px 20px;
+    max-width: 1500px;
     width: 100%;
     margin: 0 auto;
 }
 
-/* Título igual vibe do sistema */
 .page-title {
-    font-size: 26px;
-    margin-bottom: 25px;
     color: #273287;
-    font-weight: 700;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eaeaea;
 }
 
-/* BLOCO da Busca – estilizado como card da home */
-.busca-card {
-    background: white;
-    border-radius: 10px;
+/* =========================================
+   ÁREA DE BUSCA (Estilo Card)
+   ========================================= */
+.card {
+    background: #fff;
     padding: 25px 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    margin-bottom: 30px;
-    border-left: 6px solid #4E5BBD;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-left: 4px solid #4E5BBD;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* "Buscar Paciente" estilo seção */
-.busca-card h3 {
-    margin-bottom: 18px;
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    color: #273287;
     font-size: 20px;
     font-weight: 600;
-    color: #273287;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-/* Linha do input */
+/* Inputs e Botões */
 .input-row {
     display: flex;
-    gap: 12px;
+    gap: 15px;
+    align-items: center; /* Ajustado para alinhar input e botão */
 }
 
-.input-row input {
-    flex: 1;
-    padding: 14px 16px;
-    font-size: 15px;
-    border: 2px solid #d6d9ff;
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
     border-radius: 6px;
-    background: #f8f9ff;
+    font-size: 15px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-.input-row input:focus {
-    border-color: #4E5BBD;
-    background: #fff;
+.form-control:focus {
     outline: none;
+    border-color: #4E5BBD;
+    box-shadow: 0 0 0 3px rgba(78, 91, 189, 0.1);
 }
 
 .btn-primary {
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
     background: #4E5BBD;
     color: white;
-    border: none;
-    font-size: 15px;
-    border-radius: 6px;
-    padding: 14px 22px;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Garante que o texto não quebre */
 }
 
 .btn-primary:hover {
-    background: #3c4796;
+    background: #3a479d;
+    box-shadow: 0 4px 8px rgba(78, 91, 189, 0.3);
 }
 
-/* Status da busca */
-.status-text {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #273287;
+/* Mensagens de Status da Busca */
+.search-status {
+    margin-top: 15px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-/* Seção dos resultados com mesmo padrão da home */
+.status-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 3px solid #2e7d32;
+}
+
+.status-warning {
+    background-color: #fff3e0;
+    color: #ef6c00;
+    border-left: 3px solid #ef6c00;
+}
+
+.status-info {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-left: 3px solid #1565c0;
+}
+
+/* =========================================
+   ÁREA DE RESULTADOS
+   ========================================= */
+.result-container {
+    margin-top: 2rem;
+    display: none;
+}
+
 .resultados-title {
-    font-size: 22px;
-    font-weight: 600;
     color: #273287;
-    margin-bottom: 15px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 35px;;
+    padding-bottom: 10px;
+    font-weight: bold;
 }
 
-/* Tabela igual à home */
+/* Tabela de OCIs */
 .tabela-pacientes {
     width: 100%;
     border-collapse: collapse;
@@ -111,7 +149,7 @@
     font-size: 15px;
 }
 
-/* Linhas alternadas */
+/* Efeito Zebra e Hover */
 .tabela-pacientes tbody tr:nth-child(even) {
     background: #f5f6ff;
 }
@@ -126,8 +164,13 @@
     transition: 0.2s ease;
 }
 
-/* Data limite atrasada */
+/* Status Cores (Datas) */
 .vermelho {
     color: #c62828;
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.verde {
+    color: #0b8f00;
+    font-weight: bold;
 }
