@@ -1,0 +1,74 @@
+[
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 1,
+    "fields": {
+      "nome": "Danilo Nogueira de Carvalho",
+      "especialidade": "Clínico Geral"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 2,
+    "fields": {
+      "nome": "Vandenberg Carneiro Mendes",
+      "especialidade": "Clínico Geral / Cirurgião Geral"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 3,
+    "fields": {
+      "nome": "Felipe Afonso Gonçalves",
+      "especialidade": "Clínico Geral"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 4,
+    "fields": {
+      "nome": "Marilia Gabriela Uchôa Guerreiro",
+      "especialidade": "Clínico Geral"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 5,
+    "fields": {
+      "nome": "Hiago Alves de Freitas Rosado Xavier",
+      "especialidade": "Clínico Geral"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 6,
+    "fields": {
+      "nome": "Andrei Ramalho Antunes Brito",
+      "especialidade": "Ortopedista / Traumatologista"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 7,
+    "fields": {
+      "nome": "Victor Couto da Silveira Araújo",
+      "especialidade": "Psiquiatra / Médico de Família"
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 8,
+    "fields": {
+      "nome": "Nilson Neto de Araújo Morais",
+      "especialidade": null
+    }
+  },
+  {
+    "model": "usuarios.profissionalexecutante",
+    "pk": 9,
+    "fields": {
+      "nome": "Pedro Augusto Dias Timóteo",
+      "especialidade": null
+    }
+  }
+]

@@ -1,0 +1,422 @@
+[
+    {
+        "model": "usuarios.oci",
+        "pk": 1,
+        "fields": {
+            "paciente": 12,
+            "codigo_oci": "09.01.01.001-4",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA INICIAL DE CÂNCER DE MAMA",
+            "tipo": "cancer",
+            "profissional_executante": 3,
+            "data_abertura": "2025-10-29",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica/teleconsulta; Mamografia; Ultrassonografia mamária bilateral."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 2,
+        "fields": {
+            "paciente": 7,
+            "codigo_oci": "09.01.01.009-0",
+            "nome_oci": "OCI PROGRESSÃO DA AVALIAÇÃO DIAGNÓSTICA DE CÂNCER DE MAMA - I",
+            "tipo": "cancer",
+            "profissional_executante": 2,
+            "data_abertura": "2025-11-08",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica/teleconsulta; Punção aspirativa de mama; Biópsia/exérese de nódulo; Exame citopatológico."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 3,
+        "fields": {
+            "paciente": 18,
+            "codigo_oci": "09.01.01.010-3",
+            "nome_oci": "OCI PROGRESSÃO DA AVALIAÇÃO DIAGNÓSTICA DE CÂNCER DE MAMA - II",
+            "tipo": "cancer",
+            "profissional_executante": 3,
+            "data_abertura": "2025-06-14",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica/teleconsulta; Punção por agulha grossa; Exame anatomopatológico; Biópsia/exérese de nódulo."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 4,
+        "fields": {
+            "paciente": 26,
+            "codigo_oci": "09.01.01.005-7",
+            "nome_oci": "OCI INVESTIGAÇÃO DIAGNÓSTICA DE CÂNCER DE COLO DE ÚTERO",
+            "tipo": "cancer",
+            "profissional_executante": 1,
+            "data_abertura": "2025-06-19",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica/teleconsulta; Biópsia do colo uterino; Exame anatomopatológico; Colposcopia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 5,
+        "fields": {
+            "paciente": 3,
+            "codigo_oci": "09.01.01.011-1",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA E TERAPÊUTICA DE CÂNCER DE COLO DO ÚTERO - I",
+            "tipo": "cancer",
+            "profissional_executante": 2,
+            "data_abertura": "2025-06-13",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica/teleconsulta; Excisão tipo I; Exame anatomopatológico; Colposcopia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 6,
+        "fields": {
+            "paciente": 22,
+            "codigo_oci": "09.01.01.012-0",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA E TERAPÊUTICA DE CÂNCER DE COLO DO ÚTERO - II",
+            "tipo": "cancer",
+            "profissional_executante": 2,
+            "data_abertura": "2025-04-02",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Excisão tipo II; Exame anatomopatológico; Colposcopia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 7,
+        "fields": {
+            "paciente": 11,
+            "codigo_oci": "09.01.01.004-9",
+            "nome_oci": "OCI PROGRESSÃO DA AVALIAÇÃO DIAGNÓSTICA DE CÂNCER DE PRÓSTATA",
+            "tipo": "cancer",
+            "profissional_executante": 2,
+            "data_abertura": "2025-10-05",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Ultrassonografia de próstata via transretal; Biópsia de próstata; Exame anatomopatológico."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 8,
+        "fields": {
+            "paciente": 15,
+            "codigo_oci": "09.01.01.007-3",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA DE CÂNCER GÁSTRICO",
+            "tipo": "cancer",
+            "profissional_executante": 2,
+            "data_abertura": "2025-10-05",
+            "data_conclusao": "2025-10-30",
+            "observacoes": "Obrigatórios: Consulta médica; Esofagogastroduodenoscopia; Exame anatomopatológico."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 9,
+        "fields": {
+            "paciente": 27,
+            "codigo_oci": "09.01.01.008-1",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA DE CÂNCER COLORRETAL",
+            "tipo": "cancer",
+            "profissional_executante": 2,
+            "data_abertura": "2025-04-15",
+            "data_conclusao": "2025-05-16",
+            "observacoes": "Obrigatórios: Consulta médica; Colonoscopia; Exame anatomopatológico."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 10,
+        "fields": {
+            "paciente": 4,
+            "codigo_oci": "09.02.01.001-8",
+            "nome_oci": "OCI AVALIAÇÃO DE RISCO CIRÚRGICO",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-09-01",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Eletrocardiograma; Radiografia de tórax; Exames laboratoriais."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 11,
+        "fields": {
+            "paciente": 6,
+            "codigo_oci": "09.02.01.002-6",
+            "nome_oci": "OCI AVALIAÇÃO CARDIOLÓGICA",
+            "tipo": "geral",
+            "profissional_executante": 7,
+            "data_abertura": "2025-05-01",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; ECG; RX tórax; Ecocardiograma; Exames laboratoriais."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 12,
+        "fields": {
+            "paciente": 30,
+            "codigo_oci": "09.02.01.003-4",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA INICIAL – SÍNDROME CORONARIANA CRÔNICA",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-03-31",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; ECG; Ecocardiograma; Teste de esforço; Exames laboratoriais."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 13,
+        "fields": {
+            "paciente": 2,
+            "codigo_oci": "09.02.01.004-2",
+            "nome_oci": "OCI PROGRESSÃO DA AVALIAÇÃO DIAGNÓSTICA I – SÍNDROME CORONARIANA CRÔNICA",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-07-27",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Ecocardiografia de estresse."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 14,
+        "fields": {
+            "paciente": 19,
+            "codigo_oci": "09.02.01.005-0",
+            "nome_oci": "OCI PROGRESSÃO DA AVALIAÇÃO DIAGNÓSTICA II – SÍNDROME CORONARIANA CRÔNICA",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-09-22",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Cintilografia de miocárdio (repouso e estresse)."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 15,
+        "fields": {
+            "paciente": 14,
+            "codigo_oci": "09.02.01.006-9",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA – INSUFICIÊNCIA CARDÍACA",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-09-21",
+            "data_conclusao": "2025-11-01",
+            "observacoes": "Obrigatórios: Consulta médica; ECG; Teste de esforço; Ecocardiograma; Holter 24h; BNP."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 16,
+        "fields": {
+            "paciente": 10,
+            "codigo_oci": "09.03.01.001-1",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA EM ORTOPEDIA COM RADIOLOGIA",
+            "tipo": "geral",
+            "profissional_executante": 6,
+            "data_abertura": "2025-01-21",
+            "data_conclusao": "2025-01-31",
+            "observacoes": "Obrigatórios: Consulta médica; Radiografia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 17,
+        "fields": {
+            "paciente": 5,
+            "codigo_oci": "09.03.01.002-0",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA EM ORTOPEDIA COM RADIOLOGIA E ULTRASSONOGRAFIA",
+            "tipo": "geral",
+            "profissional_executante": 6,
+            "data_abertura": "2025-08-30",
+            "data_conclusao": "2025-09-21",
+            "observacoes": "Obrigatórios: Consulta médica; Ultrassonografia de articulação; Radiografia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 18,
+        "fields": {
+            "paciente": 21,
+            "codigo_oci": "09.03.01.003-8",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA EM ORTOPEDIA COM TOMOGRAFIA",
+            "tipo": "geral",
+            "profissional_executante": 6,
+            "data_abertura": "2025-07-14",
+            "data_conclusao": "2025-08-17",
+            "observacoes": "Obrigatórios: Consulta médica; Tomografia computadorizada; Radiografia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 19,
+        "fields": {
+            "paciente": 9,
+            "codigo_oci": "09.03.01.004-6",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA EM ORTOPEDIA COM RESSONÂNCIA",
+            "tipo": "geral",
+            "profissional_executante": 6,
+            "data_abertura": "2025-06-28",
+            "data_conclusao": "2025-08-06",
+            "observacoes": "Obrigatórios: Consulta médica; Ressonância magnética; Radiografia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 20,
+        "fields": {
+            "paciente": 25,
+            "codigo_oci": "09.04.01.001-5",
+            "nome_oci": "OCI AVALIAÇÃO INICIAL DE DÉFICIT AUDITIVO",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-04-10",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Audiometria tonal limiar; Imittanciometria."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 21,
+        "fields": {
+            "paciente": 13,
+            "codigo_oci": "09.04.01.002-3",
+            "nome_oci": "OCI PROGRESSÃO DA AVALIAÇÃO DIAGNÓSTICA DE DÉFICIT AUDITIVO",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-05-27",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Audiometria; Potenciais evocados; Imittanciometria."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 22,
+        "fields": {
+            "paciente": 8,
+            "codigo_oci": "09.04.01.003-1",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA DE NASOFARINGE E OROFARINGE",
+            "tipo": "geral",
+            "profissional_executante": 3,
+            "data_abertura": "2025-01-09",
+            "data_conclusao": "2025-01-31",
+            "observacoes": "Obrigatórios: Consulta médica; Videolaringoscopia; Laringoscopia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 23,
+        "fields": {
+            "paciente": 16,
+            "codigo_oci": "09.05.01.001-9",
+            "nome_oci": "OCI AVALIAÇÃO INICIAL EM OFTALMOLOGIA - 0 A 8 ANOS",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-05-23",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Teste ortóptico; Mapeamento de retina; Biomicroscopia de fundo de olho."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 24,
+        "fields": {
+            "paciente": 23,
+            "codigo_oci": "09.05.01.002-7",
+            "nome_oci": "OCI AVALIAÇÃO DE ESTRABISMO",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-09-13",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Teste ortóptico; Mapeamento de retina; Tonometria; Fundoscopia; Retinografia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 25,
+        "fields": {
+            "paciente": 29,
+            "codigo_oci": "09.05.01.003-5",
+            "nome_oci": "OCI AVALIAÇÃO INICIAL EM OFTALMOLOGIA - A PARTIR DE 9 ANOS",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-11-06",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Tonometria; Mapeamento de retina; Biomicroscopia; Teste ortóptico."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 26,
+        "fields": {
+            "paciente": 1,
+            "codigo_oci": "09.05.01.004-3",
+            "nome_oci": "OCI AVALIAÇÃO DE RETINOPATIA DIABÉTICA",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-05-21",
+            "data_conclusao": "2025-07-03",
+            "observacoes": "Obrigatórios: Consulta médica; Mapeamento de retina; Retinografia; Biomicroscopia; Tonometria."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 27,
+        "fields": {
+            "paciente": 28,
+            "codigo_oci": "09.05.01.005-1",
+            "nome_oci": "OCI AVALIAÇÃO INICIAL PARA ONCOLOGIA OFTALMOLÓGICA",
+            "tipo": "cancer",
+            "profissional_executante": 1,
+            "data_abertura": "2025-10-12",
+            "data_conclusao": "2025-10-25",
+            "observacoes": "Obrigatórios: Consulta médica; Ultrassonografia de globo ocular; Mapeamento de retina; Biomicroscopia; Tonometria; Retinografia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 28,
+        "fields": {
+            "paciente": 20,
+            "codigo_oci": "09.05.01.006-0",
+            "nome_oci": "OCI AVALIAÇÃO DIAGNÓSTICA EM NEURO OFTALMOLOGIA",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-02-22",
+            "data_conclusao": null,
+            "observacoes": "Obrigatórios: Consulta médica; Campimetria; Tonometria; Teste de visão de cores; Mapeamento de retina; Retinografia; Biomicroscopia."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 29,
+        "fields": {
+            "paciente": 17,
+            "codigo_oci": "09.05.01.007-8",
+            "nome_oci": "OCI EXAMES OFTALMOLÓGICOS SOB SEDAÇÃO",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-08-04",
+            "data_conclusao": "2025-09-10",
+            "observacoes": "Obrigatórios: Consulta médica; Sedação; Tonometria; Mapeamento de retina."
+        }
+    },
+    {
+        "model": "usuarios.oci",
+        "pk": 30,
+        "fields": {
+            "paciente": 24,
+            "codigo_oci": "09.05.01.003-5",
+            "nome_oci": "OCI AVALIAÇÃO INICIAL EM OFTALMOLOGIA - A PARTIR DE 9 ANOS",
+            "tipo": "geral",
+            "profissional_executante": 1,
+            "data_abertura": "2025-08-07",
+            "data_conclusao": "2025-09-03",
+            "observacoes": "Obrigatórios: Consulta médica; Tonometria; Mapeamento de retina; Biomicroscopia; Teste ortóptico."
+        }
+    }
+]
